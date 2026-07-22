@@ -41,7 +41,13 @@ class Block(ABC):
     outputs: tuple[PortSpec, ...] = ()
 
     def __init__(self, **config: Any) -> None:
-        self.config = config
+           # Support both:
+    # Block(width=320)
+    # Block(config={"width": 320})
+        if "config" in config and isinstance(config["config"], dict):
+            self.config = dict(config["config"])
+        else:
+            self.config = config
 
     @abstractmethod
     def run(self, inputs: dict[str, Any]) -> BlockResult:
