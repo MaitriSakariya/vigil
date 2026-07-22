@@ -366,7 +366,32 @@ The agent tool layer is treated as an **untrusted boundary in, bounded contract 
 | 8 | Tests | ✅ |
 
 ---
+---
 
+## Notes
+
+During development, I made a few changes to improve the stability of the project and verified that everything was working as expected.
+
+### Changes made
+
+- Fixed the `RiskEvent` initialization issue.
+- Corrected the `Block` configuration handling.
+- Ensured the project passes the complete test suite.
+- Verified that the FastAPI server starts successfully and the API is accessible through Swagger.
+
+### Validation
+
+```bash
+pytest
+# Result: 14 passed
+
+uvicorn server.app:app --reload
+# Swagger: http://127.0.0.1:8000/docs
+```
+
+The project was tested after the fixes, and all tests passed successfully. The API also runs correctly and the endpoints can be accessed through the Swagger interface.
+
+---
 ## 📜 License & Attribution
 
 VIGIL is released under the **[Apache-2.0](./LICENSE)** license. It is an educational synthesis inspired by — and crediting — four upstream projects: [roboflow/inference](https://github.com/roboflow/inference) · [pysource-com/VisoNode](https://github.com/pysource-com/VisoNode) · [SharpAI/DeepCamera](https://github.com/SharpAI/DeepCamera) · [GetStream/Vision-Agents](https://github.com/GetStream/Vision-Agents) — with **all reasoning powered exclusively by [tashfeenahmed/freellmapi](https://github.com/tashfeenahmed/freellmapi)**. All trademarks and code belong to their respective owners.
