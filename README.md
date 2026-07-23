@@ -392,6 +392,21 @@ uvicorn server.app:app --reload
 The project was tested after the fixes, and all tests passed successfully. The API also runs correctly and the endpoints can be accessed through the Swagger interface.
 
 ---
+## Evaluation
+
+The project was validated after implementing the required fixes.
+
+Validation included:
+
+- Running the complete automated test suite (`14/14` tests passing).
+- Starting the FastAPI application successfully.
+- Verifying the API through the Swagger interface.
+- Testing the application using the sample images included in the `datasets/` directory.
+
+The evaluation dataset is available under `datasets/` for reference.
+
+
+---
 ## 📜 License & Attribution
 
 VIGIL is released under the **[Apache-2.0](./LICENSE)** license. It is an educational synthesis inspired by — and crediting — four upstream projects: [roboflow/inference](https://github.com/roboflow/inference) · [pysource-com/VisoNode](https://github.com/pysource-com/VisoNode) · [SharpAI/DeepCamera](https://github.com/SharpAI/DeepCamera) · [GetStream/Vision-Agents](https://github.com/GetStream/Vision-Agents) — with **all reasoning powered exclusively by [tashfeenahmed/freellmapi](https://github.com/tashfeenahmed/freellmapi)**. All trademarks and code belong to their respective owners.
