@@ -394,18 +394,28 @@ The project was tested after the fixes, and all tests passed successfully. The A
 ---
 ## Evaluation
 
-The project was validated after implementing the required fixes.
+The project was evaluated on a small public image dataset consisting of real-world traffic, pedestrian, and indoor scenes.
 
-Validation included:
+Object detection was performed using the pretrained YOLOv8n model. The detected objects were then used to validate the inference pipeline.
 
-- Running the complete automated test suite (`14/14` tests passing).
-- Starting the FastAPI application successfully.
-- Verifying the API through the Swagger interface.
-- Testing the application using the sample images included in the `datasets/` directory.
+| Image | Detected Objects | Inference Time |
+|-------|------------------|---------------:|
+| Screenshot 2026-07-22 200844 | Person, Car | 104.7 ms |
+| Screenshot 2026-07-22 201046 | Person, Car, Tie | 115.1 ms |
+| Screenshot 2026-07-22 201109 | Person, Umbrella | 88.9 ms |
+| Screenshot 2026-07-22 201238 | Person, Bicycle, Bus, Car, Motorcycle, Truck | 86.3 ms |
+| Screenshot 2026-07-22 201341 | Person, Car | 85.5 ms |
+| Screenshot 2026-07-22 201415 | Bicycle | 66.6 ms |
+| Screenshot 2026-07-22 201444 | Person, Laptop, Pizza, Dining Table, Couch, Cup | 78.9 ms |
+| Screenshot 2026-07-22 201515 | Person, Car, Motorcycle | 64.6 ms |
+| Screenshot 2026-07-22 201756 | Person, Laptop, Chair, Book, Potted Plant | 55.8 ms |
 
-The evaluation dataset is available under `datasets/` for reference.
+**Summary**
 
-
+- Total images evaluated: **9**
+- Detection model: **YOLOv8n (Ultralytics)**
+- Average inference time: **~83 ms per image**
+- Images include traffic scenes, pedestrians, vehicles, and indoor environments.
 ---
 ## 📜 License & Attribution
 
