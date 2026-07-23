@@ -392,14 +392,14 @@ uvicorn server.app:app --reload
 The project was tested after the fixes, and all tests passed successfully. The API also runs correctly and the endpoints can be accessed through the Swagger interface.
 
 ---
-## Evaluation
+## 📊 Evaluation
 
-The project was evaluated on a small public image dataset consisting of real-world traffic, pedestrian, and indoor scenes.
+The project was evaluated on a small public image dataset containing **9 real-world images** representing diverse environments, including traffic intersections, parking areas, pedestrians, bicycles, vehicles, and indoor office scenes.
 
-Object detection was performed using the pretrained YOLOv8n model. The detected objects were then used to validate the inference pipeline.
+Object detection was performed using the **pretrained Ultralytics YOLOv8n** model. Each image was processed individually, and the detected objects were visually verified through the generated prediction outputs. The evaluation validates the perception stage of the VIGIL pipeline by confirming that common objects can be detected reliably before being passed to downstream reasoning components.
 
-| Image | Detected Objects | Inference Time |
-|-------|------------------|---------------:|
+| Image | Primary Objects Detected | Inference Time |
+|-------|--------------------------|---------------:|
 | Screenshot 2026-07-22 200844 | Person, Car | 104.7 ms |
 | Screenshot 2026-07-22 201046 | Person, Car, Tie | 115.1 ms |
 | Screenshot 2026-07-22 201109 | Person, Umbrella | 88.9 ms |
@@ -410,12 +410,25 @@ Object detection was performed using the pretrained YOLOv8n model. The detected 
 | Screenshot 2026-07-22 201515 | Person, Car, Motorcycle | 64.6 ms |
 | Screenshot 2026-07-22 201756 | Person, Laptop, Chair, Book, Potted Plant | 55.8 ms |
 
-**Summary**
+### Evaluation Summary
 
-- Total images evaluated: **9**
-- Detection model: **YOLOv8n (Ultralytics)**
-- Average inference time: **~83 ms per image**
-- Images include traffic scenes, pedestrians, vehicles, and indoor environments.
+- **Dataset:** 9 public sample images
+- **Detection Model:** Ultralytics YOLOv8n (pretrained)
+- **Objects Detected:** Person, Car, Bicycle, Bus, Motorcycle, Truck, Laptop, Chair, Book, Umbrella, Pizza, Dining Table, Couch, Cup, Tie, and others
+- **Average Inference Time:** ~83 ms per image
+- **Project Test Suite:** ✅ 14/14 tests passed
+- **API Validation:** FastAPI endpoints verified successfully using Swagger UI
+
+### Observations
+
+- The model successfully detected major objects across both outdoor and indoor scenes with consistently good qualitative performance.
+- Multiple object classes were detected simultaneously in complex traffic and crowded environments.
+- Some small or partially occluded objects produced lower-confidence detections, which is expected for a lightweight pretrained model.
+- The evaluation demonstrates that the perception layer of VIGIL is functioning correctly and is capable of producing structured detections for subsequent validation and reasoning stages.
+
+> **Note:** This evaluation focuses on validating the object detection stage using the pretrained YOLOv8n model. Since no custom model training or labeled ground-truth annotations were used, quantitative metrics such as mAP, Precision, and Recall are not reported.
+
+Sample prediction outputs with detected bounding boxes are included in the `Datasets/images/` directory for visual verification of the evaluation results.
 ---
 ## 📜 License & Attribution
 
